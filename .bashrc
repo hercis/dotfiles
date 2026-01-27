@@ -2,7 +2,7 @@ PS1=$PS1'\[\e[1 q\]'
 
 HISTSIZE=200
 HISTCONTROL=ignoreboth
-HISTIGNORE='ls:cd:pwd:exit:clear:pd:gd:d:c:h:ll:cdl:ltr:..:...:....:.....:.2:.3:.4:.5:.6'
+HISTIGNORE='ls:cd:pwd:exit:clear:pd:gd:d:c:h:ll:ltr:cdl:..:...:....:.....:.2:.3:.4:.5:.6'
 
 shopt -s histappend
 PROMPT_COMMAND='history -a; history -n'

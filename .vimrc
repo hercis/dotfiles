@@ -17,13 +17,14 @@ set tabstop=2 shiftwidth=2 softtabstop=2
 set expandtab
 
 set fileformat=dos
-set shortmess-=S " show search count
-set cinoptions+=j1 " indent java anonymous classes
+set shortmess-=S " Show search count
+set cinoptions+=j1 " Indent java anonymous classes
 
 autocmd FileType help noremap <buffer> q :q<cr>
+autocmd FilterWritePre * if &diff | setlocal wrap< | endif
 
 let mapleader=","
-"nnoremap <Leader>, ,
+nnoremap <Leader>, ,
 
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
@@ -40,14 +41,14 @@ vnoremap <Leader>s :s///g<Left><Left><Left>
 nnoremap <Leader>O m`O<Esc>``
 
 " Paste from yank register
-nnoremap <leader>p "0p
-nnoremap <leader>P "0P
-vnoremap <leader>p "0p
-vnoremap <leader>P "0P
+nnoremap <Leader>p "0p
+nnoremap <Leader>P "0P
+vnoremap <Leader>p "0p
+vnoremap <Leader>P "0P
 
 " Don't store the deleted text in any register
-nnoremap <Leader>d "_d             
-vnoremap <Leader>d "_d             
+nnoremap <Leader>d "_d
+vnoremap <Leader>d "_d
 
 " Move to the next capital letter"
 nnoremap ]U :call FindNextUppercase()<CR>

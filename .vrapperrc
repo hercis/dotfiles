@@ -37,14 +37,14 @@ nnoremap gT <C-w>gT
 nnoremap <Leader>O m`O<Esc>``
 
 " Paste from yank register
-nnoremap <leader>p "0p
-nnoremap <leader>P "0P
-vnoremap <leader>p "0p
-vnoremap <leader>P "0P
+nnoremap <Leader>p "0p
+nnoremap <Leader>P "0P
+vnoremap <Leader>p "0p
+vnoremap <Leader>P "0P
 
 " Don't store the deleted text in any register
-nnoremap <Leader>d "_d             
-vnoremap <Leader>d "_d             
+nnoremap <Leader>d "_d
+vnoremap <Leader>d "_d
 
 " Move to the next capital letter"
 nnoremap ]U /[A-Z]<return>:noh<CR>
