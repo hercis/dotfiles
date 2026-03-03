@@ -1,15 +1,15 @@
 PS1=$PS1'\[\e[1 q\]'
 
-HISTSIZE=200
+HISTSIZE=300
 HISTCONTROL=ignoreboth
-HISTIGNORE='ls:cd:pwd:exit:clear:pd:gd:d:c:h:ll:ltr:cdl:..:...:....:.....:.2:.3:.4:.5:.6'
+HISTIGNORE='ls:cd:pwd:exit:clear:pd:gd:d:c:h:ll:ltr:cdl:..:...:....:.....:......:.2:.3:.4:.5:.6:.7'
 
 shopt -s histappend
 PROMPT_COMMAND='history -a; history -n'
 
 #PATH=$PATH:.
 
-CDPATH=~/works/data:~/works/repo
+CDPATH=~/works:~/works/repo
 
 VISUAL=vim
 EDITOR=$VISUAL
@@ -17,12 +17,14 @@ EDITOR=$VISUAL
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias .....='cd ../../../../'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
 alias .2='cd ../..'
 alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
-alias .6='cd ../../../../../../'
+alias .6='cd ../../../../../..'
+alias .7='cd ../../../../../../..'
 
 alias ll='ls -lah'
 alias ltr='ls -ltrh'
@@ -35,7 +37,7 @@ alias pd=popd
 alias h='history | tac | less'
 alias c=clear
 
-alias gw=./gradlew
+alias gw=./gradlew --console=plain
 alias mw=./mvnw
 
 # https://superuser.com/questions/240180/creating-an-alias-containing-bash-history-expansion
