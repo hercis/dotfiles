@@ -26,10 +26,8 @@ autocmd FilterWritePre * if &diff | setlocal wrap< | endif
 let mapleader=","
 nnoremap <Leader>, ,
 
-"nnoremap <Leader>w :w<CR>
-"nnoremap <Leader>q :q<CR>
-"nnoremap <Leader>x :x<CR>
-"nnoremap <Leader>b :b<Space>
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>x :x<CR>
 nnoremap <Leader>l :ls<CR>
 nnoremap <Leader>h :help<Space>
 
