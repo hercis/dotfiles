@@ -1,3 +1,4 @@
+set gvimpath=/Users/edwhd/scoop/apps/vim/current/gvim
 set number
 set ignorecase
 set smartcase
@@ -16,7 +17,7 @@ set clipboard=unnamed
 
 " Map leader to comma
 let mapleader=","
-"nnoremap <Leader>, ,
+nnoremap <Leader>, ,
 
 :subwordmappings
 
@@ -61,11 +62,11 @@ nnoremap 5J JJJJJ
 
 " Jump to the previous unmatched }
 nnoremap [} ?}<CR>:noh<CR>
-onoremap [} ?}<CR>:noh<CR>
+"onoremap [} ?}<CR>:noh<CR>
 
 " Jump to the previous unmatched {
 nnoremap ]{ /\{<CR>:noh<CR>
-onoremap ]{ /\{<CR>:noh<CR>
+"onoremap ]{ /\{<CR>:noh<CR>
 
 eclipseaction NextMember org.eclipse.jdt.ui.edit.text.java.goto.next.member
 nmap ]] :NextMember<CR>

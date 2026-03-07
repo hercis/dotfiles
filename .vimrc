@@ -12,23 +12,28 @@ set hlsearch
 "set splitright
 "set splitbelow
 
-set scrolloff=2
-set tabstop=2 shiftwidth=2 softtabstop=2
 set expandtab
+set scrolloff=2 tabstop=2 shiftwidth=2 softtabstop=2
 
 set fileformat=dos
 set shortmess-=S " Show search count
 set cinoptions+=j1 " Indent java anonymous classes
 
+if has('termguicolors')
+  set termguicolors
+endif
+
 autocmd FileType help noremap <buffer> q :q<cr>
 autocmd FilterWritePre * if &diff | setlocal wrap< | endif
 
+" Map leader to comma
 let mapleader=","
 nnoremap <Leader>, ,
 
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>x :x<CR>
 nnoremap <Leader>l :ls<CR>
+nnoremap <Leader>r :source %<CR>
 nnoremap <Leader>h :help<Space>
 
 nnoremap <Leader>s :%s///g<Left><Left><Left>
@@ -49,43 +54,47 @@ nnoremap <Leader>d "_d
 vnoremap <Leader>d "_d
 
 " Move to the next capital letter"
-nnoremap ]U :call FindNextUppercase()<CR>
-nnoremap [U :call FindPrevUppercase()<CR>
+"nnoremap ]U :call FindChar('[A-Z]', 'W')<CR>
+"nnoremap [U :call FindChar('[A-Z]', 'bW')<CR>
 
-function! FindNextUppercase()
-  call search('[A-Z]', 'W')
+" Jump to the previous unmatched }
+nnoremap [} :call FindChar('}', 'bW')<CR>
+
+" Jump to the previous unmatched {
+nnoremap ]{ :call FindChar('{', 'W')<CR>
+
+function! FindChar(pattern, flags)
+  call search(a:pattern, a:flags)
   if v:hlsearch
     nohlsearch
   endif
 endfunction
 
-function! FindPrevUppercase()
-  " 'bW' flags: 'b' for backward, 'W' to prevent wrapping/highlight side effects
-  call search('[A-Z]', 'bW')
-  if v:hlsearch
-    nohlsearch
-  endif
-endfunction
+" https://github.com/bkad/CamelCaseMotion
+let g:camelcasemotion_key = '<Leader>'
+
+" https://github.com/justinmk/vim-sneak
+"let g:sneak#label = 1
 
 " Cursor shape
-if &term =~ 'xterm' || &term =~ '256color' || has("win32unix")
-  " Git Bash, MSYS2, or plain terminal Vim fallback
+if !has('gui_running')
   let &t_SI = "\e[5 q"  " Insert: vertical bar
   let &t_SR = "\e[3 q"  " Replace: underline
   let &t_EI = "\e[1 q"  " Normal: block
   let &t_ti .= "\e[1 q" " Startup: block
   let &t_te .= "\e[0 q" " Exit: restore default
-elseif has('gui_running') || exists('+guicursor')
-  " Modern cursor shape (GVim, Neovim, etc.)
-  " Note: Ideally, this should be the first if condition,
-  " but the logic is not functioning as expected when running in Git Bash.
-  set guicursor=n-v-c:block-blinkon1,i-ci-ve:ver25-blinkon1,r-cr-o:hor20-blinkon1
-  "set guicursor=n-v-c:block-blinkon1,i-ci-ve:ver25-blinkon1,r-cr:hor20-blinkon1,o:hor50-blinkon1
+else 
+  set guicursor=n-v-c:block-blinkon500-blinkoff500,i-ci-ve:ver25-blinkon500-blinkoff500,r-cr-o:hor20-blinkon500-blinkoff500
+
+  set guioptions-=T
+  set guioptions-=m
+  set guioptions-=r
+  set guioptions-=l
+  set guioptions-=b
 endif
 
-" https://github.com/morhetz/gruvbox
-set background=dark 
-autocmd vimenter * ++nested colorscheme gruvbox
+" https://github.com/Chromosore/vim-inkpot-refilled
+colorscheme inkpot
 
 " https://github.com/k-takata/minpac
 function! PackInit() abort
@@ -96,12 +105,15 @@ function! PackInit() abort
 
   call minpac#add('tpope/vim-sensible')
   call minpac#add('tpope/vim-repeat')
+  call minpac#add('tpope/vim-surround')
   call minpac#add('justinmk/vim-sneak')
-  call minpac#add('morhetz/gruvbox')
+  call minpac#add('tommcdo/vim-exchange')
+  call minpac#add('bkad/CamelCaseMotion')
+  call minpac#add('Chromosore/vim-inkpot-refilled')
 endfunction
 
-command! PackUpdate call PackInit() | call minpac#update()
-command! PackClean  call PackInit() | call minpac#clean()
+command! PackUpdate source $MYVIMRC | call PackInit() | call minpac#update()
+command! PackClean  source $MYVIMRC | call PackInit() | call minpac#clean()
 command! PackStatus call PackInit() | call minpac#status()
 
 function! PackList(...)
