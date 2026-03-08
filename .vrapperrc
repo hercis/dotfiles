@@ -47,8 +47,9 @@ vnoremap <Leader>P "0P
 nnoremap <Leader>d "_d
 vnoremap <Leader>d "_d
 
-"nnoremap * *N
-"nnoremap # #N
+nnoremap * *N
+nnoremap # #N
+nnoremap <Leader>j /[{(]<Return>:noh<CR>
 
 "Bugfix {num}J
 nnoremap 2J JJ

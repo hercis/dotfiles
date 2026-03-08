@@ -23,7 +23,10 @@ if has('termguicolors')
   set termguicolors
 endif
 
+" q key to close a help window
 autocmd FileType help noremap <buffer> q :q<cr>
+
+" Line wrapping behavior when in diff mode
 autocmd FilterWritePre * if &diff | setlocal wrap< | endif
 
 " Map leader to comma
@@ -53,17 +56,21 @@ vnoremap <Leader>P "0P
 nnoremap <Leader>d "_d
 vnoremap <Leader>d "_d
 
+nnoremap * *N
+nnoremap # #N
+nnoremap <Leader>j :call CharFind('[{(]', 'W')<CR>
+
 " Move to the next capital letter"
-"nnoremap ]U :call FindChar('[A-Z]', 'W')<CR>
-"nnoremap [U :call FindChar('[A-Z]', 'bW')<CR>
+"nnoremap ]U :call CharFind('[A-Z]', 'W')<CR>
+"nnoremap [U :call CharFind('[A-Z]', 'bW')<CR>
 
 " Jump to the previous unmatched }
-nnoremap [} :call FindChar('}', 'bW')<CR>
+nnoremap [} :call CharFind('}', 'bW')<CR>
 
 " Jump to the previous unmatched {
-nnoremap ]{ :call FindChar('{', 'W')<CR>
+nnoremap ]{ :call CharFind('{', 'W')<CR>
 
-function! FindChar(pattern, flags)
+function! CharFind(pattern, flags)
   call search(a:pattern, a:flags)
   if v:hlsearch
     nohlsearch
