@@ -4,9 +4,10 @@ set ignorecase
 set smartcase
 set incsearch
 set hlsearch
-set expandtab
 set scrolloff=2
+set expandtab
 set tabstop=2
+set softtabstop=2
 set shiftwidth=2
 set textwidth=100
 
@@ -18,6 +19,9 @@ set clipboard=unnamed
 " Map leader to comma
 let mapleader=","
 nnoremap <Leader>, ,
+nnoremap \ ,
+xnoremap \ ,
+onoremap \ ,
 
 :subwordmappings
 
@@ -49,7 +53,6 @@ vnoremap <Leader>d "_d
 
 nnoremap * *N
 nnoremap # #N
-nnoremap <Leader>j /[{(]<Return>:noh<CR>
 
 "Bugfix {num}J
 nnoremap 2J JJ
@@ -91,11 +94,11 @@ nmap <Leader>o :ShowOutline<CR>
 nmap s <Plug>(sneak_s)
 nmap S <Plug>(sneak_S)
 nmap ; <Plug>(sneak-next)
-nmap , <Plug>(sneak-prev)
+nmap \ <Plug>(sneak-prev)
 vmap s <Plug>(sneak_s)
 vmap Z <Plug>(sneak_S)
 vmap ; <Plug>(sneak-next)
-vmap , <Plug>(sneak-prev)
+vmap \ <Plug>(sneak-prev)
 nmap f <Plug>(sneak_f)
 nmap F <Plug>(sneak_F)
 nmap t <Plug>(sneak_t)

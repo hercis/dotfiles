@@ -11,9 +11,9 @@ set hlsearch
 "set nowrapscan
 "set splitright
 "set splitbelow
-
+set scrolloff=2 
 set expandtab
-set scrolloff=2 tabstop=2 shiftwidth=2 softtabstop=2
+set tabstop=2 softtabstop=2 shiftwidth=2 
 
 set fileformat=dos
 set shortmess-=S " Show search count
@@ -32,6 +32,9 @@ autocmd FilterWritePre * if &diff | setlocal wrap< | endif
 " Map leader to comma
 let mapleader=","
 nnoremap <Leader>, ,
+nnoremap \ ,
+xnoremap \ ,
+onoremap \ ,
 
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>x :x<CR>
@@ -58,7 +61,6 @@ vnoremap <Leader>d "_d
 
 nnoremap * *N
 nnoremap # #N
-nnoremap <Leader>j :call CharFind('[{(]', 'W')<CR>
 
 " Move to the next capital letter"
 "nnoremap ]U :call CharFind('[A-Z]', 'W')<CR>
@@ -82,6 +84,11 @@ let g:camelcasemotion_key = '<Leader>'
 
 " https://github.com/justinmk/vim-sneak
 "let g:sneak#label = 1
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
+"map <Leader>, <Plug>Sneak_,
 
 " Cursor shape
 if !has('gui_running')
