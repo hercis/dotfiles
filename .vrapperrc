@@ -79,7 +79,7 @@ eclipseaction PreviousMember org.eclipse.jdt.ui.edit.text.java.goto.previous.mem
 nmap [[ :PreviousMember<CR>
 
 eclipseuiaction QuickSwitchEditor org.eclipse.ui.window.openEditorDropDown
-nmap gb :QuickSwitchEditor<CR>
+nmap <Leader>b :QuickSwitchEditor<CR>
 
 eclipseaction QuickFormat org.eclipse.jdt.ui.edit.text.java.quick.format
 vmap <Leader>q :QuickFormat<CR>
